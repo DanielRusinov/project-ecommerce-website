@@ -1,4 +1,8 @@
 Rails.application.configure do
+
+
+
+  Paperclip.options[:command_path] = "/usr/bin/"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
