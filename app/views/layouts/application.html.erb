@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>TPProject</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,13 +11,18 @@
   </head>
 
   <body>
-  <%= render 'devise/helpers/login' %>
-  <%= render 'devise/helpers/register' %>
+  <%= render "layouts/navbar" %>
 
-	<p class="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <div class="container pt-3 mt-3">
+     
     <%= yield %>
+     
+  </div>
+
+  <%= render "layouts/footer" %>
     
   </body>
 </html>
