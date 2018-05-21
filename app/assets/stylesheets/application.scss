@@ -15,17 +15,27 @@
  */
 
 @import "bootstrap";
-
+*{
+	color:white;
+}
 body
 {
-	background-color: orange;
+	background: url(https://loeilrotatif.fr/wp-content/uploads/2016/09/formation-ecommerce-bidart-biarritz-1.png);
+	background-size: cover;
 }
 
 .container
 {
-	background-color: lightgrey;
+    -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
 }
 
-.footer{
-    background-color: black;
+.nav-item{
+    font-size: 20px;
+}
+
+.navbar-brand{
+    height: 60px;
+    width: 58px;
 }

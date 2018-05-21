@@ -9,6 +9,8 @@ gem 'bootstrap'
 
 gem 'devise'
 
+gem 'aws-sdk', '~> 3'
+
 gem "paperclip", "~> 6.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
