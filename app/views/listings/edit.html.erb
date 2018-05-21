@@ -1,6 +1,10 @@
 <h1>Editing Listing</h1>
 
-<%= render 'form', listing: @listing %>
+<% if @listing.user == current_user %>
+	<%= render 'form', listing: @listing %>
+<% else %>
+	<% controller.redirect_to listings_path, :alert => 'You dont have access to edit others listings!!' %>
+<% end %>
 
 <%= link_to 'Show', @listing %> |
 <%= link_to 'Back', listings_path %>
