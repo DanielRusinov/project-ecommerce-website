@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <li>
-  <%= link_to('Edit profile', edit_user_registration_path) %>
+  <%= link_to('Profile', current_user ) %>
   </li>
 <% else %>
   <li>

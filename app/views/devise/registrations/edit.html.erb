@@ -48,7 +48,8 @@
 
   <div class="field">
     <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth %>
+    <%= f.date_select :date_of_birth,
+       :start_year => (Time.current.year - 18), :end_year => 1950 %>
   </div>
 
   <div class="field">
