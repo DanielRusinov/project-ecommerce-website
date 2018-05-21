@@ -25,4 +25,5 @@
 	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <% end%>
 
+<%= link_to 'User\'s profile', user_path(@listing.user) %> | 
 <%= link_to 'Back', listings_path %>
