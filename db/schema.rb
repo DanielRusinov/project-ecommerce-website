@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524123311) do
+ActiveRecord::Schema.define(version: 20180524134248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,6 @@ ActiveRecord::Schema.define(version: 20180524123311) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.integer "user_id"
   end
 
@@ -53,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180524123311) do
     t.string "last_name"
     t.string "country"
     t.string "city"
-    t.datetime "date_of_birth"
+    t.date "date_of_birth"
     t.string "phone_number"
     t.string "username"
     t.string "avatar_file_name"
