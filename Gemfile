@@ -9,6 +9,8 @@ gem 'bootstrap'
 
 gem 'devise'
 
+gem 'rails_admin'
+
 gem 'aws-sdk', '~> 3'
 
 gem "paperclip", "~> 6.0.0"
