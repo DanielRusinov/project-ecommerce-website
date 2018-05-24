@@ -15,6 +15,8 @@ gem 'aws-sdk', '~> 3'
 
 gem 'paypal-recurring'
 
+gem 'stripe'
+
 gem "paperclip", "~> 6.0.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
