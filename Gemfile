@@ -7,6 +7,8 @@ end
 
 gem 'bootstrap'
 
+gem 'figaro'
+
 gem 'devise'
 
 gem 'rails_admin'
