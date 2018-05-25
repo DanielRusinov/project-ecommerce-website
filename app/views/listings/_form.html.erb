@@ -31,6 +31,9 @@
      <%= form.file_field :image, id: :listing_image %>
   </div>
 
+  <div class="field">
+    <%= select_tag(:category_id, options_for_select(@categories), {:prompt => "Categories"}) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
