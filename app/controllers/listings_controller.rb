@@ -34,14 +34,15 @@ class ListingsController < ApplicationController
     end
   end
 
-  def update
-    @product.category_id = params[:category_id]
-    
+  def update  
+  @listing.category_id = params[:category_id]
+   
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
+        @categories = Category.all.map{|c| [ c.name, c.id ] }
         format.html { render :edit }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end

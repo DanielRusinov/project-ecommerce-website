@@ -6,7 +6,7 @@ class Listing < ApplicationRecord
   	validates :price, presence: true,
   		numericality: { :message => ": Only positive number without spaces are allowed" }
   	validates :description, presence: true,
-  		length: { :minimum => 50 }
+  		length: { :minimum => 20 }
 
   	has_attached_file :image, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png"
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
