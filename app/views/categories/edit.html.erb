@@ -1,6 +1,9 @@
 <h1>Editing Category</h1>
 
-<%= render 'form', category: @category %>
+<% if current_user.admin? %>
+	<%= render 'form', category: @category %>
+<% else %>
+	<% controller.redirect_to listings_path, :alert => 'You dont have access to edit categories!!' %>
+<% end %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Back', categories_path, class: "btn btn-primary btn-md mt-4" %>

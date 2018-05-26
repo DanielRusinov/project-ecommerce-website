@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def create
@@ -34,6 +35,8 @@ class ListingsController < ApplicationController
   end
 
   def update
+    @product.category_id = params[:category_id]
+    
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }

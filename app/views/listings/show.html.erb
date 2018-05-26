@@ -20,9 +20,9 @@
 </p>
 
 <% if @listing.user == current_user %>
-	<%= link_to 'Edit', edit_listing_path(@listing) %> | 
-	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+	<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-primary btn-md mt-4" %>
+	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-md mt-4" %> 
 <% end%>
 
-<%= link_to 'User\'s profile', user_path(@listing.user) %> | 
-<%= link_to 'Back', listings_path %>
+<%= link_to 'User\'s profile', user_path(@listing.user), class: "btn btn-primary btn-md mt-4" %>
+<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md mt-4" %>

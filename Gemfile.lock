@@ -830,6 +830,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
+  execjs
   figaro
   jbuilder (~> 2.5)
   jquery-rails

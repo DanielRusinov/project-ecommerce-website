@@ -6,5 +6,5 @@
 	<% controller.redirect_to listings_path, :alert => 'You dont have access to edit others listings!!' %>
 <% end %>
 
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Show', @listing, class: "btn btn-primary btn-md mt-4" %>
+<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md mt-4" %>

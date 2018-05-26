@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :listings
@@ -15,7 +15,7 @@ class User < ApplicationRecord
       format: { with: /\A[^@\s]+@([^@.\s]+.)+[^@.\s]+\z/ ,
       :message => ": Please enter a valid email" }
 
-  has_attached_file :avatar, styles: { thumb: "159x150>",}, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { thumb: "150x150>",}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 end

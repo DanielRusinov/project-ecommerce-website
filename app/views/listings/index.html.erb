@@ -16,7 +16,7 @@
           <div class="row">
           <% @listings.each do |listing| %>
             <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-              <div class="card">
+              <div class="card mt-4">
                 <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
                     <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
                 </span>
