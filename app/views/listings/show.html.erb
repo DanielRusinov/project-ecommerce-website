@@ -24,9 +24,8 @@
 	<%= image_tag @listing.image.url(:medium) %>
 </p>
 
-<%= link_to 'Pay Now', new_charge_path, class: "btn btn-primary btn-md mt-4" %>
-
 <% if @listing.user == current_user %>
+  <%= link_to 'Buy', new_charge_path(id: @listing.id), class: "btn btn-success btn-md mt-4"%>
 	<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-primary btn-md mt-4" %>
 	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-md mt-4" %> 
 <% end%>

@@ -1,18 +1,18 @@
 <%= form_tag charges_path do %>
   <article>
+    <%= hidden_field_tag 'id', params[:id] %>
     <% if flash[:error].present? %>
       <div id="error_explanation">
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+    <span>Promo: $5.00</span>
     </label>
   </article>
-
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="A promotion for your offer!"
+    data-amount="500"
+    data-locale="auto"></script>
 <% end %>
