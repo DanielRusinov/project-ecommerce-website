@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div align="center"><h1>Promo listings</h1></div>
-<div class="album pb-3">
+<div class="album mb-4 pb-3">
   <div class="container">
     <div class="row">
       <% Listing.where(order_first: true).shuffle.first(4).each do |listing| %>
         <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-          <div class="card h-100 mt-4">
+          <div class="card h-100">
             <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
                 <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
             </span>
@@ -38,7 +38,7 @@
   		<div class="row">
 				<% Listing.where(category_id: @category.id).each do |listing| %>
 					<div class="col-xl-3 col-lg-4 col-sm-6 col-12 ">
-						<div class="card h-100 mt-4">
+						<div class="card h-100">
 						  <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
 						    <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
 						  </span>

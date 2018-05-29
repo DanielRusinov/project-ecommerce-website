@@ -8,7 +8,7 @@
           <div class="row">
             <% @listings.where(order_first: true).each do |listing| %>
               <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                <div class="card h-100 mt-4">
+                <div class="card h-100">
                   <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
                       <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
                   </span>
@@ -35,7 +35,7 @@
 
     </main>
 
-    <footer class="text-muted">
+    <footer class="footer navbar-fixed-bottom text-muted">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
