@@ -1,5 +1,6 @@
 Rails.application.configure do
 
+  Rails.application.routes.default_url_options[:host] = 'asterdeal.herokuapp.com'
 
   config.action_mailer.default_url_options = { host: 'asterdeal.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
