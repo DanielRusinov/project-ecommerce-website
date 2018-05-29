@@ -34,7 +34,21 @@
   <%= @user.phone_number %>
 </p>
 
+<p>
+  <strong>Email address:</strong>
+  <%= @user.email %>
+</p>
+
 <% if @user == current_user %>
-	<%= link_to 'Edit Profile', edit_user_registration_path(current_user), class: "btn btn-primary btn-md mt-4" %>
+	<%= link_to 'Edit Profile', edit_user_registration_path(current_user), class: "btn btn-primary btn-md my-4" %>
 <% end %>
-<%= link_to "Back", :back, class: "btn btn-primary btn-md mt-4" %>
+
+<p>
+  <strong>Listings:</strong>
+  <% Listing.where(user_id: params[:id]).each do |listing| %>
+    <li><%= link_to listing.title, listing_path(listing.id) %>, 
+        <%= listing.price %> лв.</li>
+  <% end %>
+</p>
+
+<%= link_to "Back", listings_path, class: "btn btn-primary btn-md my-4" %>

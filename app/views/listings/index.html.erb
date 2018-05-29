@@ -2,32 +2,33 @@
       
       <img src="https://image.ibb.co/cNduY8/Untitled.png" height="100%" width="100%">
 
+      <div align="center"><h1>Promo listings</h1></div>
       <div class="album">
         <div class="container">
           <div class="row">
-          <% @listings.each do |listing| %>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-              <div class="card mt-4">
-                <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
-                    <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
-                </span>
-                <div class="card-body">
-                  <%= link_to listing_path(listing) do %>
-                    <h4><%= listing.title %></h4>
-                  <% end %>
-            
-                  <h5> <%= listing.price %> лв.</h5>
-                  <%= link_to Category.find(listing.category_id).name, category_path(listing.category_id) %>
-                </div>
-        
-                <div class="modal fade" id="exampleModal<%= listing.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <%= image_tag listing.image, class: "img-thumbnail" %>
+            <% @listings.where(order_first: true).each do |listing| %>
+              <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                <div class="card h-100 mt-4">
+                  <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
+                      <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
+                  </span>
+                  <div class="card-body">
+                    <%= link_to listing_path(listing) do %>
+                      <h4><%= listing.title %></h4>
+                    <% end %>
+              
+                    <h5> <%= listing.price %> лв.</h5>
+                    <%= link_to Category.find(listing.category_id).name, category_path(listing.category_id) %>
+                  </div>
+          
+                  <div class="modal fade" id="exampleModal<%= listing.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <%= image_tag listing.image, class: "img-thumbnail" %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %> 
+            <% end %> 
           </div>
         </div>
       </div>

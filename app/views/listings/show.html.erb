@@ -25,10 +25,10 @@
 </p>
 
 <% if @listing.user == current_user %>
-  <%= link_to 'Buy', new_charge_path(id: @listing.id), class: "btn btn-success btn-md mt-4"%>
-	<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-primary btn-md mt-4" %>
-	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-md mt-4" %> 
+  <%= link_to 'Buy a Promotion', new_charge_path(id: @listing.id), class: "btn btn-success btn-md my-4"%><br>
+	<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-primary btn-md my-4" %>
+	<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-md my-4" %> 
 <% end%>
 
-<%= link_to 'User\'s profile', user_path(@listing.user), class: "btn btn-primary btn-md mt-4" %>
-<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md mt-4" %>
+<%= link_to 'User\'s profile', user_path(@listing.user), class: "btn btn-primary btn-md my-4" %>
+<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md my-4" %>

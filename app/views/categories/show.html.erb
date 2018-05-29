@@ -1,19 +1,51 @@
 <p id="notice"><%= notice %></p>
 
+<div align="center"><h1>Promo listings</h1></div>
+<div class="album pb-3">
+  <div class="container">
+    <div class="row">
+      <% Listing.where(order_first: true).shuffle.first(4).each do |listing| %>
+        <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+          <div class="card mt-4">
+            <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
+                <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
+            </span>
+            <div class="card-body">
+              <%= link_to listing_path(listing) do %>
+                <h4><%= listing.title %></h4>
+              <% end %>
+        
+              <h5> <%= listing.price %> лв.</h5>
+              <%= link_to Category.find(listing.category_id).name, category_path(listing.category_id) %>
+            </div>
+    
+            <div class="modal fade" id="exampleModal<%= listing.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <%= image_tag listing.image, class: "img-thumbnail" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>
+
 <h3> Listings under this category </h3>
-  <div class="album py-3 bg-light">
-    <div class="container">
-      <div class="row">
+
+<div class="album py-3 bg-light">
+	<div class="container">
+  		<div class="row">
 				<% Listing.where(category_id: @category.id).each do |listing| %>
-				  <div class="col-xl-3 col-lg-4 col-sm-6 col-12 ">
+					<div class="col-xl-3 col-lg-4 col-sm-6 col-12 ">
 						<div class="card mt-4">
 						  <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
-						     <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
+						    <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
 						  </span>
 						  <div class="card-body">
 						    <%= link_to listing_path(listing) do %>
-						      <h4><%= listing.title %></h4>
-						    <% end %>
+						     	<h4><%= listing.title %></h4>
+						  <% end %>
 						            
 							<h5> <%= listing.price %> лв.</h5>
 						    <%= link_to Category.find(listing.category_id).name, category_path(listing.category_id) %>
@@ -21,14 +53,14 @@
 						        
 						  <div class="modal fade" id="exampleModal<%= listing.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						    <div class="modal-dialog" role="document">
-						      <%= image_tag listing.image, class: "img-thumbnail" %>
+						    	<%= image_tag listing.image, class: "img-thumbnail" %>
 						    </div>
-						  </div>
 						</div>
-				  </div>
-				<% end %>
-		  </div>
+					</div>
+				</div>
+			<% end %>
 		</div>
-  </div>
+	</div>
+</div>
 	
-<%= link_to 'Back', listing_path, class: "btn btn-primary btn-md mt-4" %>
+<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md my-4" %>

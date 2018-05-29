@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
   private
 
   def charges_params
-    params.permit(:stripeEmail, :stripeToken)
+    params.permit(:stripeToken)
   end
 
   def catch_exception(exception)
@@ -25,7 +25,6 @@ class ChargesController < ApplicationController
     DEFAULT_AMOUNT = 500
     
     def initialize(params, user, listing)
-      @stripe_email = params[:stripeEmail]
       @stripe_token = params[:stripeToken]
       @listing = listing.id
       @user = user
@@ -37,10 +36,10 @@ class ChargesController < ApplicationController
 
     private
 
-    attr_accessor :user, :stripe_email, :stripe_token, :listing
+    attr_accessor :user, :stripe_token, :listing
 
     def find_customer
-      if user.stripe_token && user.stripe_email
+      if user.stripe_token
         retrieve_customer(user.stripe_token)
       else
         create_customer
@@ -54,27 +53,24 @@ class ChargesController < ApplicationController
 
     def create_customer
       customer = Stripe::Customer.create(
-        email: stripe_email,
         source: stripe_token
       )
       user.update(stripe_token: customer.id)
-      user.update(stripe_email: customer.email)
       customer
     end
 
     def create_charge(customer)
-      if customer == false 
-        return false
-      else
-        Stripe::Charge.create(
-          customer: customer.id,
-          amount: DEFAULT_AMOUNT,
-          description: customer.email,
-          description: listing,
-          currency: DEFAULT_CURRENCY
-        )
-      end
-    end
+      Stripe::Charge.create(
+        customer: customer.id,
+        amount: DEFAULT_AMOUNT,
+        description: listing,
+        currency: DEFAULT_CURRENCY
+      )
 
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to new_charge_path
+        
+    end
   end
 end
