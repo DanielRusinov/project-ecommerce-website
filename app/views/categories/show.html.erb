@@ -6,7 +6,7 @@
     <div class="row">
       <% Listing.where(order_first: true).shuffle.first(4).each do |listing| %>
         <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-          <div class="card mt-4">
+          <div class="card h-100 mt-4">
             <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
                 <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
             </span>
@@ -38,7 +38,7 @@
   		<div class="row">
 				<% Listing.where(category_id: @category.id).each do |listing| %>
 					<div class="col-xl-3 col-lg-4 col-sm-6 col-12 ">
-						<div class="card mt-4">
+						<div class="card h-100 mt-4">
 						  <span data-toggle="modal" data-target="#exampleModal<%= listing.id%>">
 						    <%= image_tag listing.image, class: "img-thumbnail, card-img-top" %>
 						  </span>
@@ -62,5 +62,10 @@
 		</div>
 	</div>
 </div>
-	
-<%= link_to 'Back', listings_path, class: "btn btn-primary btn-md my-4" %>
+
+<% if user_signed_in? && current_user.admin? %>
+	<%= link_to 'Edit', edit_category_path(@category), class: "btn btn-primary btn-md my-4" %>
+	<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-md my-4" %> 
+<% end %>
+
+<%= link_to 'Back', categories_path, class: "btn btn-primary btn-md my-4" %>
